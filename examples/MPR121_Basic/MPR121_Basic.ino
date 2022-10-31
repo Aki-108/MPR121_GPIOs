@@ -15,17 +15,23 @@
 
 */
 
+// Add the library to the sketch.
 #include "MPR121_GPIOs.h"
 
+// Add a MPR121 Module to your sketch.
 MPR121 mpr = MPR121();
 
 void setup() {
-  Serial.begin(9600);
-  mpr.begin();
+    // The Serial Port is only needed in this example to see something happen.
+    Serial.begin(9600);
+    // Start running the module on the I2C Bus with the address 0x5A.
+    mpr.begin();
 }
 
 void loop() {
-  int touches = mpr.touchRead();
-  Serial.println(touches, BIN);
-  delay(500);
+    // Read which pin of the module is touched.
+    int touches = mpr.touchRead();
+    // The touches get shown in the Serial Monitor.
+    Serial.println(touches, BIN);
+    delay(500);
 }
